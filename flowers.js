@@ -12,15 +12,13 @@ const flowers = [
     'flowers_png/RoseOUTLINED.png',
     'flowers_png/SunflowerOUTLINED.png',
     'flowers_png/TulipOUTLINED.png'
-
 ];
 
-const flowerElements = []; // Track the actual DOM elements
+const flowerElements = [];
 
-window.addEventListener('mousemove', function(e) {
-    document.getElementById('x-value').textContent = e.x;
-    document.getElementById('y-value').textContent = e.y;
-});
+function updateFlowerCount() {
+    document.getElementById('flower-count').textContent = flowerElements.length;
+}
 
 document.getElementById('clickarea').addEventListener('click', function(e) {
     const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
@@ -33,18 +31,28 @@ document.getElementById('clickarea').addEventListener('click', function(e) {
     flowerImg.style.top = e.y + 'px';
     
     document.body.appendChild(flowerImg);
-    flowerElements.push(flowerImg); // Add to tracking array
+    flowerElements.push(flowerImg);
+    updateFlowerCount(); // Update counter
     
-    // Remove after 10 seconds
     setTimeout(() => {
         flowerImg.classList.add('fade-out');
         
-        // Remove from DOM after fade animation
         setTimeout(() => {
             flowerImg.remove();
-            // Remove from array
             const index = flowerElements.indexOf(flowerImg);
             if (index > -1) flowerElements.splice(index, 1);
-        }, 500); // Wait for fade-out animation
-    }, 10000); // 10 seconds
+            updateFlowerCount(); // Update counter when removed
+        }, 500);
+    }, 10000);
+});
+
+var check = document.getElementById("check");
+var audio = new Audio('Sleep_Token_-_Caramel_New__mp3_pm_.mp3');
+
+check.addEventListener('change', function() {
+    if(this.checked) {
+        audio.play().catch(e => console.error('Play failed:', e));
+    } else {
+        audio.pause();
+    }
 });
