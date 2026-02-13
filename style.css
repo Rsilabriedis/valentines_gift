@@ -162,8 +162,8 @@ h1, h2, h3, h4, h5, h6 {
         }
 .flower{
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 150px;  /* Bigger size */
+    height: 150px;
     pointer-events: none;
     opacity: 0;
     animation: fadeIn 0.5s ease-in forwards;
