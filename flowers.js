@@ -32,7 +32,7 @@ document.getElementById('clickarea').addEventListener('click', function(e) {
     
     document.body.appendChild(flowerImg);
     flowerElements.push(flowerImg);
-    updateFlowerCount(); // Update counter
+    updateFlowerCount();
     
     setTimeout(() => {
         flowerImg.classList.add('fade-out');
@@ -41,13 +41,13 @@ document.getElementById('clickarea').addEventListener('click', function(e) {
             flowerImg.remove();
             const index = flowerElements.indexOf(flowerImg);
             if (index > -1) flowerElements.splice(index, 1);
-            updateFlowerCount(); // Update counter when removed
+            updateFlowerCount();
         }, 500);
     }, 10000);
 });
 
 var check = document.getElementById("check");
-var audio = new Audio('Sleep_Token_-_Caramel_New__mp3_pm_.mp3');
+var audio = new Audio('/Caramel.mp3'); // Changed to match your new filename with leading slash
 
 check.addEventListener('change', function() {
     if(this.checked) {
